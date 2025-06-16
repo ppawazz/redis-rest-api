@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 async function getDataFromDB() {
-  const { rows } = await pool.query('SELECT * FROM product LIMIT 500');
+  const { rows } = await pool.query('SELECT * FROM product');
   return rows;
 }
 
