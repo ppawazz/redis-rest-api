@@ -15,7 +15,6 @@ async function getDataFromDB() {
 }
 
 async function createDataInDB(count) {
-  // Create a dynamic query to insert multiple products at once
   const insertQuery = `
     INSERT INTO product (name, description, price, stock)
     SELECT
@@ -32,12 +31,10 @@ async function createDataInDB(count) {
 }
 
 async function deleteAllDataFromDB() {
-  // Delete all records from the product table
   return await pool.query('DELETE FROM product');
 }
 
 async function countDataFromDB() {
-  // Count all records in the product table
   const result = await pool.query('SELECT COUNT(*) FROM product');
   return parseInt(result.rows[0].count);
 }

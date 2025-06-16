@@ -21,7 +21,7 @@ async function getData(req, res) {
 
 async function createData(req, res) {
   try {
-    const count = parseInt(req.params.count) || 10; // Default to 10 if no count provided or invalid
+    const count = parseInt(req.params.count) || 10; 
     
     if (count <= 0 || count > 1000) {
       return res.status(400).json({ message: 'Count must be between 1 and 1000' });
@@ -29,7 +29,6 @@ async function createData(req, res) {
     
     const createdData = await createDataInDB(count);
     
-    // Invalidate cache after data creation
     await setCache('all-data', '');
     
     res.status(201).json({
@@ -47,7 +46,6 @@ async function deleteAllData(req, res) {
   try {
     const result = await deleteAllDataFromDB();
     
-    // Invalidate cache after deleting all data
     await setCache('all-data', '');
     
     res.json({
