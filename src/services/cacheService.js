@@ -11,7 +11,7 @@ async function getCache(key) {
 }
 
 async function setCache(key, value) {
-    await client.set(key, value, { EX: 60 }); 
+    await client.set(key, value, { EX: 300 }); 
 }
 
 module.exports = { getCache, setCache };
